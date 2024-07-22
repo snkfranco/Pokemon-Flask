@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Info</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <img class="logo" src="{{ url_for('static', filename='assets/pokedrop.png') }}" alt="">
+        <form method="POST">
+            <input type="text" name="pokemon_name" placeholder="Type your pokemon name" required>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if pokemon_info %}
+            <div class="card">
+                <img class="pic" src="{{ pokemon_info['sprites']['front_default'] }}" alt="{{ pokemon_info['name'] }}">
+                <h2>Name: {{ pokemon_info['name'].capitalize() }}</h2>
+                <p><strong>Id:</strong> {{ pokemon_info['id'] }}</p>
+                <p><strong>Height:</strong> {{ height_m }} m</p>
+                <p><strong>Weight:</strong> {{ weight_kg }} kg</p>
+                <p><strong>Abilities:</strong> {{ abilities_str }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+
+<footer>
+    Made with POWER by SNK
+</footer>
+</html>
